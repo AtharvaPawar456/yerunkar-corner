@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Include js-yaml library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
     
     <style>
         #body-container {
@@ -55,8 +58,8 @@
 <body id="body-container">
     
     <!-- Navbar - fixed -->
-    <section class="font-mono">
-        <nav class="fixed bg-white top-0 left-0 w-full py-2 px-4 flex items-center justify-between border shadow-md">
+    <section class="font-mono z-50">
+        <nav class="fixed z-50 bg-white top-0 left-0 w-full py-2 px-4 flex items-center justify-between border shadow-md">
             <!-- Brand Logo and Name on the Left -->
             <a class="flex items-center space-x-2" href="/">
               <img src="static/your-logo.png" alt="yerunkar corner Logo" class="h-12 w-12 rounded-full border-2"> 
@@ -66,14 +69,15 @@
         
             <!-- Tabs on the Right -->
             <div class="flex items-center space-x-10">
-              <a href="#" class="text-xl text-gray-600 font-bold hover:underline hover:text-gray-900">Tab 1</a>
-              <a href="#" class="text-xl text-gray-600 font-bold hover:underline hover:text-gray-900">Tab 2</a>
+              <a href="#seasonal_items" class="text-xl text-gray-600 font-bold hover:underline hover:text-gray-900">Seasonal Items</a>
+              <a href="#items" class="text-xl text-gray-600 font-bold hover:underline hover:text-gray-900">All Food Items</a>
+              <a href="#contact" class="text-xl text-gray-600 font-bold hover:underline hover:text-gray-900">Contact</a>
             </div>
           </nav>
     </section>
     
     <!-- Banner -->
-    <section class="h-[450px] bg-gray-100 my-20">
+    <section class="h-[450px] bg-gray-100 my-20 -z-50">
         <!-- <img src="static/your-logo.png" alt="yerunkar corner Logo" class="h-12 w-12 rounded-full border-2">  -->
 
         <div class="carousel">
@@ -123,17 +127,83 @@
     </section>
     
     <!-- Season -->
-    <section class="h-screen bg-orange-200">
+    <section class="h-[250px] border" id="seasonal_items">
         <div class="text-mono text-2xl font-bold text-center py-4">Seasonal Items</div>
-    </section>
-    
+      </section>
+      
     <!-- All Items -->
-    <section></section>
-    
-    <!-- Footer -->
-    <section></section>
+    <section class="mx-20 my-4" id="items">
+      <div class="text-mono text-2xl font-bold text-center py-4">All Items</div>
 
+      <div id="foodItems" class="grid grid-cols-4 gap-4 px-10">
+        <!-- Dynamic content will be added here -->
+      </div>
+    </section>
+
+    <!-- Mass Retail Order -->
+    <section class="pt-20">
+      <div class="text-mono text-2xl text-green-700 font-bold text-center py-4 border mx-20 shadow-md hover:text-red-500">For Mass Retail Order Contact +91 98694 32812 (Phone + Whatsapp)</div>
+    </section>
+
+    <!-- Footer -->
+    <section class="pt-20 text-mono text-xl py-4 mx-20 px-20" id="contact">
+
+      
+      <div class="grid grid-cols-2 mb-10">
+        <div>
+          <div class="text-center text-md text-gray-600">Food Dealer : <b>Mr. Ganesh Yerunkar (+91 98694 32812)</b></div>
+        </div>
+
+        <div class="text-center text-md text-gray-600">Website Developer : <b>Mr. Atharva (+91 81692 39027)</b></div>
+      </div>
+
+      <div class="text-center font-bold text-gray-600">Yerunkar Corner | 2024</div>
+    </section>
+
+    <script>
+
+      // Load YAML data from file
+      fetch('static/data.yaml')
+      .then(response => response.text())
+      .then(yamlData => {
+        const data = jsyaml.load(yamlData);
+        
+        const foodItemsContainer = document.getElementById('foodItems');
+
+        // Loop through the data and render each item
+        for (const itemName in data.all_item) {
+          const item = data.all_item[itemName];
+
+          // Create the HTML structure for each item
+          const itemHtml = `
+            <div class="rounded-md border my-10 p-4 hover:shadow-md">
+              <img src="${item.img_path}" alt="${itemName}" class="h-52 w-auto border-4 rounded-md mx-auto mb-4"> 
+              <div class="text-xl font-bold text-center">${itemName}</div>
+              <div class="grid grid-cols-2 my-4">
+                <div class="text-center"><b>Qty :</b> ${item.qty} </div>
+                <div class="text-center"><b>Pieces :</b> ${item.pieces} /-</div>
+              </div>
+              <div  class="text-center text-md border p-1 text-2xl border-2 rounded-md border-green-500 hover:shadow-xl hover:shadow-green-100">
+                
+                <a href="${item.whatsappmsg}" target="_blank">
+                  <b>Rs. ${item.price} /-</b>
+                  <i class="fa-brands fa-whatsapp ml-10 text-green-700 text-2xl border px-2 py-1 rounded-md border-2 border-green-400"></i>
+                </a>
+              </div>
+            </div>
+          `;
+
+          // Append the HTML to the container
+          foodItemsContainer.innerHTML += itemHtml;
+        }
+      })
+      .catch(error => console.error('Error loading YAML data:', error));
+
+          
+    
+    </script>
 
 
 </body>
 </html>
+
