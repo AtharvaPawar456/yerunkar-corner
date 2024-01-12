@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script src="static\tailwindcss.js"></script>
 
     <!-- Include js-yaml library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
@@ -53,8 +55,9 @@
         }
     </style>
 
-    <title>Document</title>
+    <title>Yerunkar Corner</title>
 </head>
+
 <body id="body-container">
     
     <!-- Navbar - fixed -->
@@ -67,17 +70,41 @@
               <span class="text-2xl font-bold text-gray-600 hover:text-gray-900">Yerunkar Corner</span>
             </a>
         
-            <!-- Tabs on the Right -->
+            <!-- Tabs on the Right
             <div class="flex items-center space-x-10">
               <a href="#seasonal_items" class="text-xl text-gray-600 font-bold hover:underline hover:text-gray-900">Seasonal Items</a>
               <a href="#items" class="text-xl text-gray-600 font-bold hover:underline hover:text-gray-900">All Food Items</a>
               <a href="#contact" class="text-xl text-gray-600 font-bold hover:underline hover:text-gray-900">Contact</a>
-            </div>
+            </div> -->
+
+            <!-- Tabs on the Right - responsive -->
+          <div class="hidden md:flex items-center space-x-10">
+            <a href="#seasonal_items" class="text-xl text-gray-600 font-bold hover:underline hover:text-gray-900">Seasonal Items</a>
+            <a href="#items" class="text-xl text-gray-600 font-bold hover:underline hover:text-gray-900">All Food Items</a>
+            <a href="#contact" class="text-xl text-gray-600 font-bold hover:underline hover:text-gray-900">Contact</a>
+          </div>
+
+           <!-- Mobile Menu Toggle (Hamburger Icon) -->
+            <div class="md:hidden">
+              <button id="mobileMenuToggle" class="text-xl text-gray-600 hover:text-gray-900">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                  </svg>
+              </button>
+          </div>
+
+          <!-- Mobile Menu -->
+          <div id="mobileMenu" class="hidden md:hidden absolute top-full left-0 right-0 bg-white py-2 px-4 shadow-md">
+              <a href="#seasonal_items" class="block text-sm text-gray-600 font-bold hover:underline hover:text-gray-900">Seasonal Items</a>
+              <a href="#items" class="block text-sm text-gray-600 font-bold hover:underline hover:text-gray-900">All Food Items</a>
+              <a href="#contact" class="block text-sm text-gray-600 font-bold hover:underline hover:text-gray-900">Contact</a>
+          </div>
+
           </nav>
     </section>
     
     <!-- Banner -->
-    <section class="h-[450px] bg-gray-100 my-20 -z-50">
+    <section class=" bg-gray-100 mt-20 md:mt-20 -z-50">
         <!-- <img src="static/your-logo.png" alt="yerunkar corner Logo" class="h-12 w-12 rounded-full border-2">  -->
 
         <div class="carousel">
@@ -127,37 +154,45 @@
     </section>
     
     <!-- Season -->
-    <section class="h-[250px] border" id="seasonal_items">
-        <div class="text-mono text-2xl font-bold text-center py-4">Seasonal Items</div>
-      </section>
+    <section class="border bg-[#fef3c7]" id="seasonal_items">
+        <div class="border border-gray-500 mx-2 mt-2 md:border-[#fef3c7] text-mono text-xl md:text-2xl font-bold text-center py-4">Seasonal Items</div>
+    
+        <div id="seasonalItems" class="grid grid-cols-1 md:grid-cols-4 gap-4 px-10">
+          <!-- Dynamic content will be added here -->
+        </div>
+
+    </section>
       
     <!-- All Items -->
-    <section class="mx-20 my-4" id="items">
-      <div class="text-mono text-2xl font-bold text-center py-4">All Items</div>
+    <section class="md:mx-20 my-4" id="items">
+      <div class="border border-gray-500 mx-2 md:border-white text-mono text-2xl font-bold text-center py-4">All Items</div>
 
-      <div id="foodItems" class="grid grid-cols-4 gap-4 px-10">
+      <div id="foodItems" class="grid grid-cols-1 md:grid-cols-4 gap-4 px-10">
         <!-- Dynamic content will be added here -->
       </div>
     </section>
 
     <!-- Mass Retail Order -->
     <section class="pt-20">
-      <div class="text-mono text-2xl text-green-700 font-bold text-center py-4 border mx-20 shadow-md hover:text-red-500">For Mass Retail Order Contact +91 98694 32812 (Phone + Whatsapp)</div>
+      <div class="text-mono text-2xl text-green-700 font-bold text-center py-4 border mx-2 md:mx-20 shadow-md hover:text-red-500">For Mass Retail Order Contact +91 98694 32812 <br> (Phone + Whatsapp)</div>
     </section>
 
     <!-- Footer -->
-    <section class="pt-20 text-mono text-xl py-4 mx-20 px-20" id="contact">
+    <section class="pt-20 text-mono text-xl py-4 px-2 mt-10 md:px-20 bg-gray-100" id="contact">
+
+      <div class="border border-gray-500 mx-2 md:border-gray-100 md:underline text-mono text-2xl font-bold text-center py-4 mb-6">Contact</div>
 
       
-      <div class="grid grid-cols-2 mb-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 mb-10">
         <div>
-          <div class="text-center text-md text-gray-600">Food Dealer : <b>Mr. Ganesh Yerunkar (+91 98694 32812)</b></div>
+          <div class="text-center text-md text-gray-600">Food Dealer : <br><b>Mr. Ganesh Yerunkar <br> (+91 98694 32812)</b></div>
         </div>
 
-        <div class="text-center text-md text-gray-600">Website Developer : <b>Mr. Atharva (+91 81692 39027)</b></div>
+        <div class="text-center text-md mt-6 md:mt-0 text-gray-600">Website Developer : <br><b> Mr. Atharva <br> (+91 81692 39027)</b></div>
       </div>
 
-      <div class="text-center font-bold text-gray-600">Yerunkar Corner | 2024</div>
+      <hr>
+      <div class="text-center font-bold text-gray-600 mt-4">Yerunkar Corner | 2024</div>
     </section>
 
     <script>
@@ -176,7 +211,7 @@
 
           // Create the HTML structure for each item
           const itemHtml = `
-            <div class="rounded-md border my-10 p-4 hover:shadow-md">
+            <div class="rounded-md border border-gray-700 my-2 md:my-10 p-4 hover:shadow-md">
               <img src="${item.img_path}" alt="${itemName}" class="h-52 w-auto border-4 rounded-md mx-auto mb-4"> 
               <div class="text-xl font-bold text-center">${itemName}</div>
               <div class="grid grid-cols-2 my-4">
@@ -196,10 +231,44 @@
           // Append the HTML to the container
           foodItemsContainer.innerHTML += itemHtml;
         }
+
+        
+        
+        const seasonalItemsContainer = document.getElementById('seasonalItems');
+        // Loop through the data and render each item
+        for (const itemName in data.seasonal_item) {
+          const item = data.seasonal_item[itemName];
+
+          // Create the HTML structure for each item
+          const itemHtml = `
+            <div class="rounded-md border border-gray-700 my-2 md:my-10 p-4 hover:shadow-md">
+              <img src="${item.img_path}" alt="${itemName}" class="h-52 w-auto border-4 rounded-md mx-auto mb-4"> 
+              <div class="text-xl font-bold text-center">${itemName}</div>
+              <div class="grid grid-cols-2 my-4">
+                <div class="text-center"><b>Qty :</b> ${item.qty} </div>
+                <div class="text-center"><b>Pieces :</b> ${item.pieces} /-</div>
+              </div>
+              <div  class="text-center text-md border p-1 text-2xl border-2 rounded-md border-green-500 hover:shadow-xl hover:shadow-green-100">
+                
+                <a href="${item.whatsappmsg}" target="_blank">
+                  <b>Rs. ${item.price} /-</b>
+                  <i class="fa-brands fa-whatsapp ml-10 text-green-700 text-2xl border px-2 py-1 rounded-md border-2 border-green-400"></i>
+                </a>
+              </div>
+            </div>
+          `;
+
+          // Append the HTML to the container
+          seasonalItemsContainer.innerHTML += itemHtml;
+        }
       })
       .catch(error => console.error('Error loading YAML data:', error));
 
           
+      // JavaScript to toggle mobile menu visibility
+      document.getElementById('mobileMenuToggle').addEventListener('click', function () {
+        document.getElementById('mobileMenu').classList.toggle('hidden');
+      });
     
     </script>
 

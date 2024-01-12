@@ -33,6 +33,47 @@ all_item:
 
 
 
+seasonal_item:
+  Basan Laadu:
+    img_path : static\food_items\ladu.jpg
+    qty : 500 gram
+    pieces : 6
+    price : 500
+    whatsappmsg: https://wa.me/9869432812?text=I'm%20interested%20in%20Basan%20Laddu%20500grm/6pices/Rs.500/-
+  
+  Methi Laadu:
+    img_path : static\food_items\ladu.jpg
+    qty : 500 gram
+    pieces : 6
+    price : 500
+    whatsappmsg: https://wa.me/9869432812?text=I'm%20interested%20in%20Methi%20Laddu%20500grm/6pices/Rs.500/-
+
+  
+  Rava Laadu:
+    img_path : static\food_items\rava-ladu.jpeg
+    qty : 500 gram
+    pieces : 6
+    price : 500
+    whatsappmsg: https://wa.me/9869432812?text=I'm%20interested%20in%20Rava%20Laddu%20500grm/6pices/Rs.500/-
+
+  
+  _Rava Laadu:
+    img_path : static\food_items\rava-ladu.jpeg
+    qty : 500 gram
+    pieces : 6
+    price : 500
+    whatsappmsg: https://wa.me/9869432812?text=I'm%20interested%20in%20_Rava%20Laddu%20500grm/6pices/Rs.500/-
+
+
+
+
+
+
+
+
+
+
+
 info:
   history: usdyvehjh history data
   about: about data
